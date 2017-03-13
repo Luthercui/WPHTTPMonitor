@@ -1,15 +1,7 @@
 PODS:
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - Kiwi (2.4.0)
-  - WPHTTPMonitor (0.1.0)
+  - WPHTTPMonitor (1.0.0)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase
-  - Kiwi
   - WPHTTPMonitor (from `../`)
 
 EXTERNAL SOURCES:
@@ -17,10 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
-  WPHTTPMonitor: 0ba698be9b59d1d0cec3fe1fc4e1b9fa899a7fd9
+  WPHTTPMonitor: 77cc988dbc54395ebe5c0fccc58400a371c9b5c1
 
-PODFILE CHECKSUM: 53f6d834a5eab196ccc5134e2ba460ab9bc964a6
+PODFILE CHECKSUM: c3ef78ce0affd3765dc581ac569379c9f950a1c0
 
 COCOAPODS: 1.1.1

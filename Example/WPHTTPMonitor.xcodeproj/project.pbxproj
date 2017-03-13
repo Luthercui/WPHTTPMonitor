@@ -23,7 +23,6 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		9ED0F64FB33C2776199403FB /* Pods_WPHTTPMonitor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0CCB699CA52C536BBEA612 /* Pods_WPHTTPMonitor_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1DC47CBC02017EEDCC6BAFDF /* Pods-WPHTTPMonitor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPHTTPMonitor_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPHTTPMonitor_Tests/Pods-WPHTTPMonitor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2054971D140D3F0B66854B3D /* Pods_WPHTTPMonitor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WPHTTPMonitor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		21526F6100E60BB809A7B7B4 /* Pods-WPHTTPMonitor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPHTTPMonitor_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WPHTTPMonitor_Tests/Pods-WPHTTPMonitor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		28F0CEAAE89943BF3CDE751F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3F0CCB699CA52C536BBEA612 /* Pods_WPHTTPMonitor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WPHTTPMonitor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD1E27FEF37190478634885 /* Pods-WPHTTPMonitor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPHTTPMonitor_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPHTTPMonitor_Example/Pods-WPHTTPMonitor_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +85,6 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				9ED0F64FB33C2776199403FB /* Pods_WPHTTPMonitor_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,8 +186,6 @@
 			children = (
 				9A9391108BD8774491B2B931 /* Pods-WPHTTPMonitor_Example.debug.xcconfig */,
 				5DD1E27FEF37190478634885 /* Pods-WPHTTPMonitor_Example.release.xcconfig */,
-				21526F6100E60BB809A7B7B4 /* Pods-WPHTTPMonitor_Tests.debug.xcconfig */,
-				1DC47CBC02017EEDCC6BAFDF /* Pods-WPHTTPMonitor_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -223,12 +217,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "WPHTTPMonitor_Tests" */;
 			buildPhases = (
-				CBEB028181ACEE65F90C8FE5 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				A81A775826B585415AC535CE /* [CP] Embed Pods Frameworks */,
-				EC04955C9CDD40F2BC10AB56 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,51 +334,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPHTTPMonitor_Example/Pods-WPHTTPMonitor_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A81A775826B585415AC535CE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPHTTPMonitor_Tests/Pods-WPHTTPMonitor_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CBEB028181ACEE65F90C8FE5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EC04955C9CDD40F2BC10AB56 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPHTTPMonitor_Tests/Pods-WPHTTPMonitor_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -556,7 +502,6 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21526F6100E60BB809A7B7B4 /* Pods-WPHTTPMonitor_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -580,7 +525,6 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DC47CBC02017EEDCC6BAFDF /* Pods-WPHTTPMonitor_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
