@@ -1,0 +1,22 @@
+{
+  "name": "WPHTTPMonitor",
+  "version": "0.1.0",
+  "summary": "A short description of WPHTTPMonitor.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/luther.cui@gmail.com/WPHTTPMonitor",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "luther.cui@gmail.com": "liangliangcui@sohu-inc.com"
+  },
+  "source": {
+    "git": "https://github.com/luther.cui@gmail.com/WPHTTPMonitor.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "WPHTTPMonitor/Classes/**/*"
+}

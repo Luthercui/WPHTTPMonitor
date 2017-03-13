@@ -1,0 +1,6 @@
+framework module WPHTTPMonitor {
+  umbrella header "WPHTTPMonitor-umbrella.h"
+
+  export *
+  module * { export * }
+}
