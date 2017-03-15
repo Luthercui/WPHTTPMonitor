@@ -1,5 +1,5 @@
 PODS:
-  - WPHTTPMonitor (1.0.0)
+  - WPHTTPMonitor (1.0.1)
 
 DEPENDENCIES:
   - WPHTTPMonitor (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  WPHTTPMonitor: 77cc988dbc54395ebe5c0fccc58400a371c9b5c1
+  WPHTTPMonitor: 4a2185f1e55a5ed4f55412fff7ef6f9a43b3bdb1
 
 PODFILE CHECKSUM: c3ef78ce0affd3765dc581ac569379c9f950a1c0
 

@@ -30,10 +30,11 @@
     return self;
 }
 
+
 - (void)load {
     
     self.isSwizzle=YES;
-    Class cls = NSClassFromString(@"__WPURLSessionConfiguration") ?: NSClassFromString(@"WPURLSessionConfiguration");
+    Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
     
 }
@@ -41,7 +42,7 @@
 - (void)unload {
     
     self.isSwizzle=NO;
-    Class cls = NSClassFromString(@"__WPURLSessionConfiguration") ?: NSClassFromString(@"WPURLSessionConfiguration");
+    Class cls = NSClassFromString(@"__NSCFURLSessionConfiguration") ?: NSClassFromString(@"NSURLSessionConfiguration");
     [self swizzleSelector:@selector(protocolClasses) fromClass:cls toClass:[self class]];
     
 }
