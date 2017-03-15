@@ -37,10 +37,10 @@
     if (!flowCount) {
         flowCount=0.0;
     }
-    UIColor *titleColor=[UIColor whiteColor];
-    UIFont *titleFont=[UIFont systemFontOfSize:18.0];
-    UIColor *detailColor=[UIColor whiteColor];
-    UIFont *detailFont=[UIFont systemFontOfSize:12.0];
+    UIColor *titleColor=[UIColor blackColor];
+    UIFont *titleFont=[UIFont systemFontOfSize:12.0];
+    UIColor *detailColor=[UIColor blackColor];
+    UIFont *detailFont=[UIFont systemFontOfSize:10.0];
     
     NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"WPHTTPMonitor\n"
                                                                                     attributes:@{
@@ -59,7 +59,7 @@
     [attrText appendAttributedString:flowCountString];
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 20, 120, 44)];
     titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor=[UIColor whiteColor];
+    titleText.textColor=[UIColor blackColor];
     titleText.textAlignment=NSTextAlignmentCenter;
     titleText.numberOfLines=0;
     titleText.attributedText=attrText;
@@ -67,14 +67,14 @@
     if ([self.navigationController viewControllers].count<1) {
         UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
         [self.view addSubview:bar];
-        bar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
+        bar.barTintColor=[UIColor whiteColor];
         
         
         UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
         backBt.frame=CGRectMake(10, 27, 40, 30);
         [backBt setTitle:@"返回" forState:UIControlStateNormal];
         backBt.titleLabel.font=[UIFont systemFontOfSize:15];
-        [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [backBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
         [bar addSubview:backBt];
         mainTableView.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);

@@ -30,20 +30,20 @@
     
     UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
     [self.view addSubview:bar];
-    bar.barTintColor=[UIColor colorWithRed:0.24f green:0.51f blue:0.78f alpha:1.00f];
+    bar.barTintColor=[UIColor whiteColor];
     
     UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
     backBt.frame=CGRectMake(10, 27, 40, 30);
     [backBt setTitle:@"返回" forState:UIControlStateNormal];
     backBt.titleLabel.font=[UIFont systemFontOfSize:15];
-    [backBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [backBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
     [bar addSubview:backBt];
     
     
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-230)/2, 20, 230, 44)];
     titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor=[UIColor whiteColor];
+    titleText.textColor=[UIColor blackColor];
     [titleText setFont:[UIFont systemFontOfSize:13.0]];
     titleText.textAlignment=NSTextAlignmentCenter;
     [bar addSubview:titleText];
