@@ -162,12 +162,12 @@
             self.httpModel.receiveJSONData = xmlString;// http://webservice.webxml.com.cn/webservices/qqOnlineWebService.asmx/qqCheckOnline?qqCode=2121
         }
     }
-    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
+    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:kFlowCount] doubleValue];
     if (!flowCount) {
         flowCount=0.0;
     }
     flowCount=flowCount+self.response.expectedContentLength/(1024.0*1024.0);
-    [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:@"flowCount"];
+    [[NSUserDefaults standardUserDefaults] setDouble:flowCount forKey:kFlowCount];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[WPHTTPModelManager defaultManager] addModel:self.httpModel];
 }

@@ -302,6 +302,9 @@
     
     
     NSString *transString = [[self class] replaceUnicode:_model.receiveJSONData];
+    if (nil == transString) {
+        transString = _model.receiveJSONData;
+    }
     receiveJSONDataDetail = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n\n",transString]
                                                                    attributes:@{
                                                                                 NSFontAttributeName : detailFont,

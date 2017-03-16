@@ -12,12 +12,13 @@
 #import "WPHTTPModelManager.h"
 #import "WPHTTPDetailViewController.h"
 
-@interface WPHTTPViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate> {
+@interface WPHTTPViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIAlertViewDelegate> {
     UITableView *mainTableView;
     NSArray *httpRequests;
     UISearchBar *mySearchBar;
     UISearchDisplayController *mySearchDisplayController;
     NSArray *filterHTTPRequests;
+    UILabel *titleText;
 }
 @end
 
@@ -33,7 +34,46 @@
     mainTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStylePlain];
     [self.view addSubview:mainTableView];
     
-    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:@"flowCount"] doubleValue];
+    titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 20, 120, 44)];
+    titleText.backgroundColor = [UIColor clearColor];
+    titleText.textColor=[UIColor blackColor];
+    titleText.textAlignment=NSTextAlignmentCenter;
+    titleText.numberOfLines=0;
+    [self updateTitleText];
+
+    UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
+    [self.view addSubview:bar];
+    bar.barTintColor=[UIColor whiteColor];
+        
+        
+    UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    backBt.frame=CGRectMake(10, 27, 40, 30);
+    [backBt setTitle:@"返回" forState:UIControlStateNormal];
+    backBt.titleLabel.font=[UIFont systemFontOfSize:15];
+    [backBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:backBt];
+    
+    UIButton *settingsBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    settingsBt.frame=CGRectMake([[UIScreen mainScreen] bounds].size.width-80, 27, 70, 30);
+    [settingsBt setTitle:@"清除记录" forState:UIControlStateNormal];
+    settingsBt.titleLabel.font=[UIFont systemFontOfSize:13];
+    [settingsBt setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [settingsBt addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+    [bar addSubview:settingsBt];
+    
+    mainTableView.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+    [bar addSubview:titleText];
+    
+    
+    [self setupSearch];
+    mainTableView.dataSource=self;
+    mainTableView.delegate=self;
+    httpRequests=[[[[WPHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
+}
+
+-(void)updateTitleText{
+    double flowCount=[[[NSUserDefaults standardUserDefaults] objectForKey:kFlowCount] doubleValue];
     if (!flowCount) {
         flowCount=0.0;
     }
@@ -41,14 +81,13 @@
     UIFont *titleFont=[UIFont systemFontOfSize:12.0];
     UIColor *detailColor=[UIColor blackColor];
     UIFont *detailFont=[UIFont systemFontOfSize:10.0];
-    
     NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"WPHTTPMonitor\n"
                                                                                     attributes:@{
                                                                                                  NSFontAttributeName : titleFont,
                                                                                                  NSForegroundColorAttributeName: titleColor
                                                                                                  }];
     
-    NSMutableAttributedString *flowCountString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"流量共%.1lfMB",flowCount]
+    NSMutableAttributedString *flowCountString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"流量共%.3lfMB",flowCount]
                                                                                         attributes:@{
                                                                                                      NSFontAttributeName : detailFont,
                                                                                                      NSForegroundColorAttributeName: detailColor
@@ -57,34 +96,7 @@
     NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
     [attrText appendAttributedString:titleString];
     [attrText appendAttributedString:flowCountString];
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(([[UIScreen mainScreen] bounds].size.width-120)/2, 20, 120, 44)];
-    titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor=[UIColor blackColor];
-    titleText.textAlignment=NSTextAlignmentCenter;
-    titleText.numberOfLines=0;
     titleText.attributedText=attrText;
-    
-    if ([self.navigationController viewControllers].count<1) {
-        UINavigationBar *bar=[[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
-        [self.view addSubview:bar];
-        bar.barTintColor=[UIColor whiteColor];
-        
-        
-        UIButton *backBt=[UIButton buttonWithType:UIButtonTypeCustom];
-        backBt.frame=CGRectMake(10, 27, 40, 30);
-        [backBt setTitle:@"返回" forState:UIControlStateNormal];
-        backBt.titleLabel.font=[UIFont systemFontOfSize:15];
-        [backBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [backBt addTarget:self action:@selector(backBtAction) forControlEvents:UIControlEventTouchUpInside];
-        [bar addSubview:backBt];
-        mainTableView.frame=CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
-        [bar addSubview:titleText];
-    }
-    
-    [self setupSearch];
-    mainTableView.dataSource=self;
-    mainTableView.delegate=self;
-    httpRequests=[[[[WPHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,6 +129,26 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+-(void)rightAction{
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"清楚记录" message:@"是否清除所有记录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    alertView.tag=101;
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){
+    if(alertView.tag ==101){
+        if(buttonIndex==0){
+            [[NSUserDefaults standardUserDefaults] setDouble:0.0 forKey:kFlowCount];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[WPHTTPModelManager defaultManager] removeAllMapObjects];
+            [[WPHTTPModelManager defaultManager] deleteAllItem];
+            httpRequests=[[[[WPHTTPModelManager defaultManager] allobjects] reverseObjectEnumerator] allObjects];
+            [self updateTitleText];
+            [mainTableView reloadData];
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource  &UITableViewDelegate

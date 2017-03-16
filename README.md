@@ -22,7 +22,7 @@ pod "WPHTTPMonitor"
 
 ## Author
 
-luther.cui@gmail.com, liangliangcui@sohu-inc.com
+luther.cui@gmail.com
 
 ## License
 

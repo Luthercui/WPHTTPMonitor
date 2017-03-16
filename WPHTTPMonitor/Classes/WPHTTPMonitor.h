@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define kRequestMaxCount 250
+#define kFlowCount @"kFlowCount"
 
 @interface WPHTTPMonitor : NSURLProtocol
 
