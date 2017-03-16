@@ -8,9 +8,13 @@
 WPHTTPMonitor是一个网络调试库，可以监控App内HTTP请求并显示请求相关的详细信息，方便App开发的网络调试。
 可以检测到包括网页，NSURLConnection,NSURLSession，AFNetworking,第三方库，第三方SDK等的HTTP请求，非常方便实用。并且可以统计App内流量。
 
-## 用例
+## 例子
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+git clone 源码
+运行example project 
+终端 
+`pod install`
+
 ## 使用
 注意请在DEBUG模式下使用WPHTTPMonitor
 在AppDelegate.m里面加入下面代码就可以了
@@ -19,8 +23,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 [WPHTTPMonitor setEnabled:YES];
 #endif
 </pre>
-<pre>
+
 显示详细界面
+<pre>
 #if defined(DEBUG)||defined(_DEBUG)
 WPHTTPViewController *vc=[[WPHTTPViewController alloc] init];
 [self presentViewController:vc animated:YES completion:nil];
