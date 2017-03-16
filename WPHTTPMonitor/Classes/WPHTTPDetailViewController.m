@@ -380,7 +380,7 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
                            
-                                                           mutabilityOption:NSPropertyListImmutable
+                                                           mutabilityOption:kCFPropertyListMutableContainersAndLeaves
                            
                                                                      format:NULL
                            
